@@ -1,0 +1,28 @@
+{
+    "brothers": [
+        {
+            "brother_number": 0,
+            "first_name": "",
+            "middle_name": "",
+            "last_name": "",
+            "nickname": "",
+            "pledge_class": "",
+            "family": "",
+            "positions": [],
+            "ancestors": [],
+            "parents": []
+        },
+        {
+            "brother_number": 1,
+            "first_name": "First",
+            "middle_name": "Bro",
+            "last_name": "Brother",
+            "nickname": "First",
+            "pledge_class": "Alpha",
+            "family": "Test Family",
+            "positions": [],
+            "ancestors": [0],
+            "parents": [0]
+        }
+    ]
+}
