@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import { Paper, InputBase, IconButton } from "@material-ui/core";
+import { ISearchProps } from "../interfaces/ISearchInterface";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -20,11 +21,6 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   })
 );
-
-interface ISearchProps {
-  searchQuery: string,
-  setSearchQuery: React.Dispatch<React.SetStateAction<string>>,
-}
 
 const Search: React.FC<ISearchProps> = ({searchQuery, setSearchQuery}) => {
   const classes = useStyles();
