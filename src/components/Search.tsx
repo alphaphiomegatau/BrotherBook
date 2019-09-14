@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: "2px 4px",
       display: "flex",
       alignItems: "center",
-      width: 600
+      width: '75%'
     },
     input: {
       marginLeft: theme.spacing(1),
