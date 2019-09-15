@@ -1,0 +1,21 @@
+{
+    "name": "brother_book_backend",
+    "version": "0.1.0",
+    "description": "Backend for a Fraternity Brother Book",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsc",
+        "start": "node dist/index.js",
+        "watch": "concurrently \"tsc -w\" \"nodemon dist/server.js\""
+    },
+    "devDependencies": {
+        "@types/express": "^4.17.1",
+        "@types/node": "^12.7.5",
+        "concurrently": "^4.1.2",
+        "nodemon": "^1.19.2",
+        "typescript": "^3.6.3"
+    },
+    "dependencies": {
+        "express": "^4.17.1"
+    }
+}
