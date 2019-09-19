@@ -1,9 +1,12 @@
+import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
 import Brother from './models/Brother';
 import { MONGODB_URI } from './util/secrets';
 
 const app = express();
+
+app.use(cors());
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useCreateIndex: true }).then(() => {
     console.log('Connected to MongoDB');
