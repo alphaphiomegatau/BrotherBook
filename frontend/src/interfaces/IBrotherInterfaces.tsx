@@ -16,7 +16,11 @@ export interface IBrother {
     family?: string;
     positions?: IPosition[];
     ancestors: string[];
-    line?: string[];
+    line?: string[][];
+    parents?: [{
+        parentId: string;
+        level: number;
+    }]
 }
 
 export interface IBrothers {

@@ -5,10 +5,11 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
     card: {
-      width: '100%',
-      maxWidth: 800,
-      marginBottom: 7,
-      display: 'flex',
+        width: '100%',
+        maxWidth: 800,
+        marginBottom: 7,
+        display: 'flex',
+        flexDirection: 'column',
     },
     details: {
         display: 'flex',
@@ -22,17 +23,18 @@ const useStyles = makeStyles({
         maxWidth: 250,
         maxHeight: 250,
     },
-    
+
 });
 
-const BrotherCard = React.memo<IBrotherCard>(({brother}) => {
+const BrotherCard = React.memo<IBrotherCard>(({ brother }) => {
     const classes = useStyles();
 
     return (
         <Card className={classes.card}>
-            <CardMedia className={classes.brotherPic} image='photos/example.jpg'/>
             <div className={classes.details}>
-                <CardContent className={classes.content}>
+                <CardMedia className={classes.brotherPic} image='photos/example.jpg' />
+                <div className={classes.details}>
+                    <CardContent className={classes.content}>
                         <Typography component='h5' variant='h5'>{`${brother.firstName} ${brother.middleName} ${brother.lastName} #${brother.brotherNumber}`}</Typography>
                         <Typography component='div'>
                             <Box fontWeight='fontWeightBold'>Pledge Class: </Box>
@@ -50,17 +52,31 @@ const BrotherCard = React.memo<IBrotherCard>(({brother}) => {
                             <Box fontWeight='fontWeightBold'>Positions: </Box>
                             <Box>{(brother.positions && brother.positions.length > 0) || 'None Found'}</Box>
                         </Typography>
-                        <Typography component='div'>
-                            <Box fontWeight='fontWeightBold'>Line: </Box>
-                            <Box>{brother.line || 'None Found'}</Box>
-                        </Typography>
-                </CardContent>
-                <CardContent className={classes.content}>
-                    {/* TODO: Buttons for visuals will go here */}
-                </CardContent>
+                    </CardContent>
+                    <CardContent className={classes.content}>
+                        {/* TODO: Buttons for visuals will go here */}
+                    </CardContent>
+                </div>
+            </div>
+            <div className={classes.details}>
+                <Typography component='div'>
+                    <Box fontWeight='fontWeightBold'>Line: </Box>
+                    {brother.line ? (
+                        brother.line.map((names, distance) => {
+                            return (
+                                <div>
+                                    <Box fontWeight='fontWeightBold'>{distance === 1 ? 'Little:' : <>Grand<sup>{distance - 1}</sup>-Little:</>}</Box>
+                                    <Box>{names.join(', ')}</Box>
+                                </div>
+                            );
+                        })
+                    ) : (
+                            <Box>None Found</Box>
+                        )}
+                </Typography>
             </div>
         </Card>
     )
-})
+});
 
 export default BrotherCard;
