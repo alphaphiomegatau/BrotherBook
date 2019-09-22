@@ -24,3 +24,5 @@ yarn-error.log*
 
 /backend/dist/
 /backend/src/util/secrets.ts
+
+.vscode/
