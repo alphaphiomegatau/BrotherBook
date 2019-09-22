@@ -33,7 +33,7 @@ export interface IBrother extends Document {
     family?: string;
     positions?: IPosition[];
     ancestors?: Schema.Types.ObjectId[];
-    parents?: {};
+    parents?: [{}];
 }
 
 const BrotherSchema = new Schema({
