@@ -1,81 +1,55 @@
 import React from 'react';
 import { IBrotherCard } from '../interfaces/IBrotherCard';
-import { Card, CardContent, Typography, CardMedia, Box } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
-
-const useStyles = makeStyles({
-    card: {
-        width: '100%',
-        maxWidth: 800,
-        marginBottom: 7,
-        display: 'flex',
-        flexDirection: 'column',
-    },
-    details: {
-        display: 'flex',
-        flexDirection: 'row',
-    },
-    content: {
-        flex: '1 0 auto',
-    },
-    brotherPic: {
-        width: 250,
-        maxWidth: 250,
-        maxHeight: 250,
-    },
-
-});
 
 const BrotherCard = React.memo<IBrotherCard>(({ brother }) => {
-    const classes = useStyles();
 
     return (
-        <Card className={classes.card}>
-            <div className={classes.details}>
-                <CardMedia className={classes.brotherPic} image='photos/example.jpg' />
-                <div className={classes.details}>
-                    <CardContent className={classes.content}>
-                        <Typography component='h5' variant='h5'>{`${brother.firstName} ${brother.middleName} ${brother.lastName} #${brother.brotherNumber}`}</Typography>
-                        <Typography component='div'>
-                            <Box fontWeight='fontWeightBold'>Pledge Class: </Box>
-                            <Box>{brother.pledgeClass}</Box>
-                        </Typography>
-                        <Typography component='div'>
-                            <Box fontWeight='fontWeightBold'>Family: </Box>
-                            <Box>{brother.family}</Box>
-                        </Typography>
-                        <Typography component='div'>
-                            <Box fontWeight='fontWeightBold'>Nickname: </Box>
-                            <Box>{brother.nickname}</Box>
-                        </Typography>
-                        <Typography component='div'>
-                            <Box fontWeight='fontWeightBold'>Positions: </Box>
-                            <Box>{(brother.positions && brother.positions.length > 0) || 'None Found'}</Box>
-                        </Typography>
-                    </CardContent>
-                    <CardContent className={classes.content}>
+        <div className="card bro-card">
+            <div className="bro-card-details">
+                <img className="bro-card-pic" src="photos/example.jpg"></img>
+                <div className="bro-card-details">
+                    <div className="bro-card-content card-text">
+                        <h5>{`${brother.firstName} ${brother.middleName} ${brother.lastName} #${brother.brotherNumber}`}</h5>
+                        <div>
+                            <strong>Pledge Class: </strong>
+                            {brother.pledgeClass}
+                        </div>
+                        <div>
+                            <strong>Family: </strong>
+                            {brother.family}
+                        </div>
+                        <div>
+                            <strong>Nickname: </strong>
+                            {brother.nickname}
+                        </div>
+                        <div>
+                            <strong>Positions: </strong>
+                            {(brother.positions && brother.positions.length > 0) || 'None Found'}
+                        </div>
+                    </div>
+                    <div className="bro-card-content">
                         {/* TODO: Buttons for visuals will go here */}
-                    </CardContent>
+                    </div>
                 </div>
             </div>
-            <div className={classes.details}>
-                <Typography component='div'>
-                    <Box fontWeight='fontWeightBold'>Line: </Box>
+            <div className="bro-card-detail">
+                <div>
+                    <strong>Line: </strong>
                     {brother.line ? (
                         brother.line.map((names, distance) => {
                             return (
-                                <div>
-                                    <Box fontWeight='fontWeightBold'>{distance === 1 ? 'Little:' : <>Grand<sup>{distance - 1}</sup>-Little:</>}</Box>
-                                    <Box>{names.join(', ')}</Box>
+                                <div key={brother._id + "_" + distance}>
+                                    <strong>{distance === 1 ? 'Little:' : <>Grand<sup>{distance - 1}</sup>-Little:</>}</strong>
+                                    {names.join(', ')}
                                 </div>
                             );
                         })
                     ) : (
-                            <Box>None Found</Box>
+                            <span>None Found</span>
                         )}
-                </Typography>
+                </div>
             </div>
-        </Card>
+        </div>
     )
 });
 

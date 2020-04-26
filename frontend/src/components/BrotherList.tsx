@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { ISearchProps } from '../interfaces/ISearchInterface';
-import { Grid } from '@material-ui/core';
 
 import { IBrothers, IBrother } from '../interfaces/IBrotherInterfaces';
 import BrotherCard from './BrotherCard';
@@ -32,9 +31,9 @@ const BrotherList: React.FC<ISearchProps & IBrothers> = ({searchQuery, setSearch
     const brotherCards = filteredBrothers.slice(0, 100).map((brother) => <BrotherCard key={brother._id} brother={brother} />);
 
     return (
-        <Grid direction='column' container justify='center' alignItems='center'>
+        <div className='container justify-content-md-center'>
             {brotherCards}
-        </Grid>
+        </div>
     )
 }
 

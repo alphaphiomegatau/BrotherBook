@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.scss';
 import Search from './components/Search';
-import { Grid, Container } from '@material-ui/core';
 import BrotherList from './components/BrotherList';
 import { IBrother } from './interfaces/IBrotherInterfaces';
 
@@ -52,13 +51,18 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <Container>
-        <Grid container spacing={0} direction='column' alignItems='center' justify='center'>
+      <div className="container">
+        <div className="row">
           <h1>Brother Book</h1>
-          <Search searchQuery={searchQuery} setSearchQuery={setQuery} />
-          <hr/>
-        </Grid>
-      </Container>
+        </div>
+        <div className="row align-self-center">
+          {/* <Grid container spacing={0} direction='column' alignItems='center' justify='center'> */}
+            <Search searchQuery={searchQuery} setSearchQuery={setQuery} />
+            <hr/>
+          {/* </Grid> */}
+        </div>
+      </div>
+      <hr/>
       <BrotherList brothers={brothers} searchQuery={searchQuery} setSearchQuery={setQuery} />
     </div>
   );
