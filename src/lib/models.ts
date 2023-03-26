@@ -1,7 +1,16 @@
+import Brothers from "../assets/collated_brothers.json";
+
 export interface IPosition {
     title: string;
     year: number;
     semester: string;
+}
+
+export enum Status {
+    ACTIVE = "Active",
+    ALUMNI = "Alumni",
+    PLEDGE = "Pledge",
+    ADVISOR = "Advisor",
 }
 
 export interface IBrother {
@@ -16,13 +25,51 @@ export interface IBrother {
     yearJoined?: number;
     semesterJoined?: string;
     pledgeClass: string;
+    status: Status;
     bigIds: string[];
     littleIds?: string[];
     positions: IPosition[];
 }
 
-export const getBrothers = (): IBrother[] => {
-    return [
+const statusStrToStatus = (statusStr: string): Status => {
+    switch (statusStr) {
+        case "Active":
+            return Status.ACTIVE;
+        case "Pledge":
+            return Status.PLEDGE;
+        case "Alumni":
+            return Status.ALUMNI;
+        case "Advisor":
+            return Status.ADVISOR;
+        default:
+            return Status.ALUMNI;
+    }
+}
+
+export const getBrothersFromFile = (): Map<string, IBrother> => {
+    const map: Map<string, IBrother> = new Map();
+
+    Object.entries(Brothers).forEach(([key, fileBrother]) => {
+        map.set(key, {
+            id: `${fileBrother.bronum}`,
+            brotherNumber: `${fileBrother.bronum}`,
+            pictureUrl: `/bropics/${fileBrother.bronum}.${fileBrother.first}.${fileBrother.last}.jpg`,
+            firstName: fileBrother.first ?? "",
+            lastName: fileBrother.last ?? "",
+            bigIds: fileBrother.big ? [`${fileBrother.big}`] : [],
+            family: fileBrother.family ?? "",
+            nickname: fileBrother.nickname ?? "",
+            pledgeClass: fileBrother.pledge ?? "",
+            positions: [],
+            status: statusStrToStatus(fileBrother.status),
+        })
+    });
+
+    return map;
+}
+
+export const getBrothers = (): Map<string, IBrother> => {
+    return new Map([["2228",
         {
             id: "2228",
             brotherNumber: "2228",
@@ -31,10 +78,11 @@ export const getBrothers = (): IBrother[] => {
             lastName: "Jarrell",
             nickname: "Captainated Spicy Pascal",
             family: "Hartman-Reinnes",
-            bigIds: ["2117"],
+            bigIds: ["2117", "2228"],
             pledgeClass: "Zeta Beta",
             yearJoined: 2017,
             semesterJoined: "Fall",
+            status: Status.ALUMNI,
             positions: [
                 {
                     "title": "Pledge Educator",
@@ -78,5 +126,5 @@ export const getBrothers = (): IBrother[] => {
                 }
             ]
         }
-    ];
+    ]]);
 };
