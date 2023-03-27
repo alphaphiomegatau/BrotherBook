@@ -15,7 +15,7 @@ export enum Status {
 
 export interface IBrother {
     id: string;
-    brotherNumber: string;
+    brotherNumber: number;
     pictureUrl: string;
     firstName: string;
     middleName?: string;
@@ -52,7 +52,7 @@ export const getBrothersFromFile = (): Map<string, IBrother> => {
     Object.entries(Brothers).forEach(([key, fileBrother]) => {
         map.set(key, {
             id: `${fileBrother.bronum}`,
-            brotherNumber: `${fileBrother.bronum}`,
+            brotherNumber: fileBrother.bronum,
             pictureUrl: `/bropics/${fileBrother.bronum}.${fileBrother.first}.${fileBrother.last}.jpg`,
             firstName: fileBrother.first ?? "",
             lastName: fileBrother.last ?? "",
@@ -72,7 +72,7 @@ export const getBrothers = (): Map<string, IBrother> => {
     return new Map([["2228",
         {
             id: "2228",
-            brotherNumber: "2228",
+            brotherNumber: 2228,
             pictureUrl: "/2228.Hunter.Jarrell.jpg",
             firstName: "Hunter",
             lastName: "Jarrell",

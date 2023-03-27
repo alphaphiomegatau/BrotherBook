@@ -28,6 +28,9 @@ export const BrotherCard: React.FC<IBrotherCardProps> = ({brother, brotherMap}) 
         </div>
         <hr className="h-px my-4 bg-gray-200 border-0" />
         <div className="flex flex-row justify-start">
+            <p className="font-medium">Brother #&nbsp;</p> {brother.brotherNumber}
+        </div>
+        <div className="flex flex-row justify-start">
             <FamilyBadge familyName={brother.family}/>
             <StatusBadge status={brother.status ?? Status.ALUMNI}/>
         </div>
