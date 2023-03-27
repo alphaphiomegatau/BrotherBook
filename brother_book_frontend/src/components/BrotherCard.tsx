@@ -1,5 +1,4 @@
 import { IBrother, Status } from "../lib/models";
-import { statusToClassNameColor } from "../lib/utils";
 import { FamilyBadge } from "./FamilyBadge";
 import { StatusBadge } from "./StatusBadge";
 

@@ -4,6 +4,7 @@ import { ErrorPage } from './pages/ErrorPage';
 import { HomePage } from './pages/HomePage'
 import { RootPagePartial } from './pages/RootPagePartial';
 
+// See https://reactrouter.com/en/main/start/tutorial
 const router = createBrowserRouter([
   {
     path: '/',
@@ -16,16 +17,12 @@ const router = createBrowserRouter([
       }
     ],
   }
-], {
+], {});
 
-});
-
-function App() {
+export const App: React.FC = () => {
   return (
     <div className="App">
       <RouterProvider router={router} />
     </div>
   )
 }
-
-export default App

@@ -60,6 +60,7 @@ export const getBrothersFromFile = (): Map<string, IBrother> => {
             family: fileBrother.family ?? "",
             nickname: fileBrother.nickname ?? "",
             pledgeClass: fileBrother.pledge ?? "",
+            // TODO: Support positions
             positions: [],
             status: statusStrToStatus(fileBrother.status),
         })
@@ -68,7 +69,7 @@ export const getBrothersFromFile = (): Map<string, IBrother> => {
     return map;
 }
 
-export const getBrothers = (): Map<string, IBrother> => {
+export const getOneForTesting = (): Map<string, IBrother> => {
     return new Map([["2228",
         {
             id: "2228",
